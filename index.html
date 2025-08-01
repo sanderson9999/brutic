@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Site</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #fff;
+      color: #111;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      margin-bottom: 0.2em;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-weight: normal;
+      font-size: 1.25em;
+      color: #444;
+    }
+
+    .hover-gallery {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    .hover-image {
+      width: 22%;
+      background-color: #ccc;
+      height: 150px;
+      margin-bottom: 20px;
+    }
+
+    .image-text-section {
+      display: flex;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .image-text-section img {
+      width: 200px;
+      height: 300px;
+      object-fit: cover;
+      background-color: #ccc;
+    }
+
+    .carousel {
+      margin: 40px 0;
+      position: relative;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+      background-color: #ccc;
+    }
+
+    .carousel-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .carousel-buttons button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .linked-image-section {
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .linked-image-section a {
+      display: inline-block;
+      width: 150px;
+      height: 150px;
+      background-color: #ccc;
+    }
+
+    .footer {
+      margin: 40px 0;
+    }
+
+    .footer a {
+      color: blue;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Section 1 -->
+    <header>
+      <h1>Page Title</h1>
+      <h2>Subtitle goes here</h2>
+    </header>
+
+    <!-- Section 2 -->
+    <section class="hover-gallery">
+      <div class="hover-image"></div>
+      <div class="hover-image"></div>
+      <div class="hover-image"></div>
+      <div class="hover-image"></div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="image-text-section">
+      <img src="#" alt="Static Image">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut orci ac augue volutpat malesuada. Quisque nec gravida nunc.</p>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="carousel">
+      <img id="carouselImage" src="#" alt="Carousel Image">
+      <div class="carousel-buttons">
+        <button onclick="prevImage()">Previous</button>
+        <button onclick="nextImage()">Next</button>
+      </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="linked-image-section">
+      <p>Label for linked image</p>
+      <a href="https://example.com" target="_blank"></a>
+    </section>
+
+    <!-- Section 6 -->
+    <section class="footer">
+      <p>This is a concluding paragraph with <a href="https://example.com" target="_blank">a linked phrase</a>.</p>
+    </section>
+
+  </div>
+
+  <script>
+    // Placeholder carousel logic
+    const images = ['#', '#', '#']; // Replace with actual image paths later
+    let index = 0;
+
+    function showImage() {
+      document.getElementById('carouselImage').src = images[index];
+    }
+
+    function prevImage() {
+      index = (index - 1 + images.length) % images.length;
+      showImage();
+    }
+
+    function nextImage() {
+      index = (index + 1) % images.length;
+      showImage();
+    }
+
+    showImage();
+  </script>
+</body>
+</html>
