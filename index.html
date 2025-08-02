@@ -41,8 +41,8 @@
 
     .hover-image {
       width: 22%;
+      aspect-ratio: 1 / 1;
       background-color: #ccc;
-      height: 150px;
       margin-bottom: 20px;
     }
 
@@ -60,28 +60,32 @@
     }
 
     .carousel {
-      margin: 40px 0;
-      position: relative;
+      margin: 60px 0;
+      text-align: center;
     }
 
     .carousel img {
-      width: 100%;
-      height: auto;
-      max-height: 500px;
+      width: auto;
+      height: 500px;
+      max-width: 100%;
       object-fit: cover;
       background-color: #ccc;
     }
 
     .carousel-buttons {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 30px;
       margin-top: 10px;
+      font-size: 2rem;
     }
 
     .carousel-buttons button {
-      padding: 10px 20px;
-      font-size: 1em;
+      background: none;
+      border: none;
       cursor: pointer;
+      font-size: 2rem;
+      line-height: 1;
     }
 
     .linked-image-section {
@@ -133,8 +137,8 @@
     <section class="carousel">
       <img id="carouselImage" src="#" alt="Carousel Image">
       <div class="carousel-buttons">
-        <button onclick="prevImage()">Previous</button>
-        <button onclick="nextImage()">Next</button>
+        <button onclick="prevImage()">&#10094;</button>
+        <button onclick="nextImage()">&#10095;</button>
       </div>
     </section>
 
@@ -174,3 +178,4 @@
   </script>
 </body>
 </html>
+
