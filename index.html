@@ -188,6 +188,22 @@ body {
   font-weight: 300;
   font-style: normal;
 }
+.carousel {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel img {
+  max-width: 100%;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel img.fade-out {
+  opacity: 0;
+}
     
   </style>
 </head>
@@ -245,7 +261,9 @@ body {
 
     <!-- Section 4 -->
     <section class="carousel">
-      <img id="carouselImage" src="#" alt="Carousel Image">
+      <div class="carousel">
+  <img id="carouselImage" class="fade" src="" alt="Carousel Image">
+</div>
       <div class="carousel-buttons">
         <button onclick="prevImage()">&#10094;</button>
         <button onclick="nextImage()">&#10095;</button>
@@ -275,56 +293,46 @@ Pioneer DJM-A9 4-channel mixer; Pioneer DJ PLX-500 direct drive turntables; Pion
   </div>
 
   <script>
-    const images = [
-      'images/06.jpg', 'images/07.jpg', 'images/08.jpg', 'images/09.jpg', 'images/10.jpg',
-      'images/11.jpg', 'images/12.jpg', 'images/13.jpg', 'images/14.jpg', 'images/15.jpg',
-      'images/16.jpg', 'images/17.jpg', 'images/18.jpg', 'images/19.jpg', 'images/20.jpg',
-      'images/21.jpg', 'images/22.jpg'
-    ];
-    let index = 0;
+  const images = [
+    'images/06.jpg', 'images/07.jpg', 'images/08.jpg', 'images/09.jpg', 'images/10.jpg',
+    'images/11.jpg', 'images/12.jpg', 'images/13.jpg', 'images/14.jpg', 'images/15.jpg',
+    'images/16.jpg', 'images/17.jpg', 'images/18.jpg', 'images/19.jpg', 'images/20.jpg',
+    'images/21.jpg', 'images/22.jpg'
+  ];
 
-    function showImage() {
-      document.getElementById('carouselImage').src = images[index];
-    }
-
-    function prevImage() {
-      index = (index - 1 + images.length) % images.length;
-      showImage();
-    }
-
-    function nextImage() {
-      index = (index + 1) % images.length;
-      showImage();
-    }
-
-    showImage();
-  const carousel = document.querySelector('.carousel');
-  const slides = document.querySelectorAll('.carousel img');
-  let index = 0;
+  let currentIndex = 0;
   let intervalId;
+  const imgElement = document.getElementById('carouselImage');
 
-  function showNextImage() {
-    index = (index + 1) % slides.length;
-    carousel.style.transform = `translateX(${-index * 100}%)`;
+  function showImage() {
+    imgElement.classList.add('fade-out');
+    setTimeout(() => {
+      imgElement.src = images[currentIndex];
+      imgElement.classList.remove('fade-out');
+    }, 500); // match CSS fade time
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage();
   }
 
   function startAutoSlide() {
-    intervalId = setInterval(showNextImage, 2000); // 2 seconds
+    intervalId = setInterval(nextImage, 2000);
   }
 
   function stopAutoSlide() {
     clearInterval(intervalId);
   }
 
-  // Advance on click
-  carousel.addEventListener('click', () => {
-    stopAutoSlide(); // Optional: prevent jumpiness by pausing timer
-    showNextImage();
-    startAutoSlide(); // Restart after click
+  imgElement.addEventListener('click', () => {
+    stopAutoSlide();
+    nextImage();
+    startAutoSlide();
   });
 
-  // Start automatic sliding
+  showImage();
   startAutoSlide();
-  </script>
+</script>
 </body>
 </html>
