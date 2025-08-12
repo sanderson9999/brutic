@@ -182,6 +182,46 @@
 
     .footer { margin: 40px 0; }
     .footer a { color: blue; text-decoration: underline; }
+    /* MOBILE LAYOUT: stack tiles, make them big, readable text */
+@media (max-width: 680px) {
+  /* Stack vertically with spacing */
+  .hover-gallery {
+    display: grid;
+    grid-template-columns: 1fr;   /* one per row */
+    gap: 16px;                    /* space between tiles */
+    margin: 24px 0;
+  }
+
+  /* Make each tile full-width square */
+  .hover-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;          /* stays square */
+    border-radius: 8px;            /* optional */
+  }
+
+  /* Always show overlay text on mobile (no hover) */
+  .hover-text {
+    opacity: 1;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.55) 0%,
+      rgba(0,0,0,0.35) 50%,
+      rgba(0,0,0,0.20) 100%
+    );
+    padding: 14px;
+  }
+
+  /* Bigger, more legible text */
+  .hover-text p {
+    margin: 6px 0;
+    font-size: clamp(14px, 4vw, 18px);   /* scales with screen */
+    line-height: 1.25;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  }
+
+  /* Ensure taps hit the link (not the overlay) */
+  .hover-text { pointer-events: none; }
+}
   </style>
 </head>
 <body>
