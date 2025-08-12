@@ -112,6 +112,32 @@
       object-fit: cover;
       background-color: #ccc;
     }
+    /* Make the whole tile clickable */
+.hover-image {
+  display: block;
+  text-decoration: none;  /* no underlines */
+  color: inherit;
+}
+
+/* Let taps click through overlay */
+.hover-text {
+  pointer-events: none;
+}
+
+/* Accessibility: focus shows overlay on keyboard navigation */
+.hover-image:focus .hover-text {
+  opacity: 1;
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 4px;
+}
+
+/* On touch/mobile, show text always */
+@media (hover: none) and (pointer: coarse) {
+  .hover-text {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.45);
+  }
+}
 
     /* Carousel */
     .carousel { margin: 60px 0; text-align: center; }
@@ -168,37 +194,48 @@
       <p><span class="highlight2">work samples:</span></p>
     </header>
 
-    <!-- Section 2 -->
-    <section class="hover-gallery">
-      <div class="hover-image" style="background-image: url('images/01.jpg');">
-        <div class="hover-text">
-          <p>Lake of Fire Blues</p>
-          <p>Live at the Arlington</p>
-          <p>Salt Lake City, May 31 2024</p>
-        </div>
-      </div>
-      <div class="hover-image" style="background-image: url('images/02.jpg');">
-        <div class="hover-text">
-          <p>Disko Sleaze II: Stito’s Revenge</p>
-          <p>Live at the Arlington</p>
-          <p>Salt Lake City, Sep 27 2024</p>
-        </div>
-      </div>
-      <div class="hover-image" style="background-image: url('images/03.jpg');">
-        <div class="hover-text">
-          <p>Harlequin</p>
-          <p>Live at the International Artist Lounge</p>
-          <p>Salt Lake City, Feb 02 2024</p>
-        </div>
-      </div>
-      <div class="hover-image" style="background-image: url('images/04.jpg');">
-        <div class="hover-text">
-          <p>Industry Nite</p>
-          <p>Live at Simons</p>
-          <p>Chicago, June 09 2024</p>
-        </div>
-      </div>
-    </section>
+   <!-- Section 2 -->
+<section class="hover-gallery">
+  <a class="hover-image"
+     href="https://example.com/01" target="_blank"
+     style="background-image: url('images/01.jpg');">
+    <div class="hover-text">
+      <p>Lake of Fire Blues</p>
+      <p>Live at the Arlington</p>
+      <p>Salt Lake City, May 31 2024</p>
+    </div>
+  </a>
+
+  <a class="hover-image"
+     href="https://example.com/02" target="_blank"
+     style="background-image: url('images/02.jpg');">
+    <div class="hover-text">
+      <p>Disko Sleaze II: Stito’s Revenge</p>
+      <p>Live at the Arlington</p>
+      <p>Salt Lake City, Sep 27 2024</p>
+    </div>
+  </a>
+
+  <a class="hover-image"
+     href="https://example.com/03" target="_blank"
+     style="background-image: url('images/03.jpg');">
+    <div class="hover-text">
+      <p>Harlequin</p>
+      <p>Live at the International Artist Lounge</p>
+      <p>Salt Lake City, Feb 02 2024</p>
+    </div>
+  </a>
+
+  <a class="hover-image"
+     href="https://example.com/04" target="_blank"
+     style="background-image: url('images/04.jpg');">
+    <div class="hover-text">
+      <p>Industry Nite</p>
+      <p>Live at Simons</p>
+      <p>Chicago, June 09 2024</p>
+    </div>
+  </a>
+</section>
 
     <!-- Section 3 -->
     <section class="image-text-section">
