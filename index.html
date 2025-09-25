@@ -62,43 +62,49 @@
     .highlight { color: #F17A77; }
     .highlight2 { color: #F8CC7E; }
 
-  :root { --tile-gap: 24px; }  /* tweak this value to taste */
+ /* Hover gallery */
+:root { --tile-gap: 24px; }
 
-/* Hover gallery */
 .hover-gallery{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;        /* centers the second row */
-  gap: var(--tile-gap);           /* controls the space between tiles */
+  justify-content: center;
+  gap: var(--tile-gap);
 }
 
 .hover-image{
-  /* exact width for 3 per row while accounting for the 2 gaps */
   flex: 0 0 calc((100% - 2 * var(--tile-gap)) / 3);
   aspect-ratio: 1 / 1;
   background-size: cover;
   background-position: center;
-  /* remove any extra margin; the gap now does the spacing */
   margin: 0;
+
+  /* needed to keep overlay inside the tile */
+  position: relative;
+  overflow: hidden;
+
+  /* your link styles */
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
+.hover-text{
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+}
+.hover-image:hover .hover-text{ opacity: 1; }
 
-    .hover-text {
-      position: absolute;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.6);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 10px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .hover-image:hover .hover-text { opacity: 1; }
-    .hover-text p { margin: 4px 0; }
 
     /* Image + text section */
     .image-text-section {
