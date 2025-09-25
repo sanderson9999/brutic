@@ -62,25 +62,26 @@
     .highlight { color: #F17A77; }
     .highlight2 { color: #F8CC7E; }
 
-    /* Hover gallery */
-    .hover-gallery {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 40px 0;
-    }
+  :root { --tile-gap: 24px; }  /* tweak this value to taste */
 
-    .hover-image {
-      width: 30%;
-      aspect-ratio: 1 / 1;
-      background-size: cover;
-      background-position: center;
-      background-color: #ccc;
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
+/* Hover gallery */
+.hover-gallery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;        /* centers the second row */
+  gap: var(--tile-gap);           /* controls the space between tiles */
+}
+
+.hover-image{
+  /* exact width for 3 per row while accounting for the 2 gaps */
+  flex: 0 0 calc((100% - 2 * var(--tile-gap)) / 3);
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  /* remove any extra margin; the gap now does the spacing */
+  margin: 0;
+}
+
 
     .hover-text {
       position: absolute;
