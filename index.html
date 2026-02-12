@@ -369,8 +369,16 @@
       showImage();
     }
 
-    function startAutoSlide() { intervalId = setInterval(nextImage, 3000); }
-    function stopAutoSlide() { clearInterval(intervalId); }
+    function startAutoSlide() {
+    // Always clear first so we never stack intervals
+    if (intervalId) clearInterval(intervalId);
+    intervalId = setInterval(nextImage, 3000);
+  }
+
+  function stopAutoSlide() {
+    if (intervalId) clearInterval(intervalId);
+    intervalId = null;
+  }
 
     // Advance on click and keep timing smooth
     imgElement.addEventListener('click', () => {
